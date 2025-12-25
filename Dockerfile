@@ -39,7 +39,7 @@ COPY requirements.app.txt /opt/requirements.app.txt
 RUN pip install --no-cache-dir -r /opt/requirements.gpu.txt
 
 # (Optional) If you actually need app deps in the image, uncomment:
-# RUN pip install --no-cache-dir -r /opt/requirements.app.txt
+RUN pip install --no-cache-dir -r /opt/requirements.app.txt
 
 # --- kohya setup ---
 RUN git clone https://github.com/FurkanGozukara/kohya_ss /opt/kohya_ss && \
@@ -49,3 +49,4 @@ RUN git clone https://github.com/FurkanGozukara/kohya_ss /opt/kohya_ss && \
 
 # quick sanity output
 CMD ["bash", "-lc", "python --version && conda --version && nvidia-smi || true && ls -la /opt/kohya_ss | head"]
+
