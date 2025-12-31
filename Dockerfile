@@ -41,12 +41,9 @@ RUN pip install --no-cache-dir -r /opt/requirements.gpu.txt
 # (Optional) If you actually need app deps in the image, uncomment:
 RUN pip install --no-cache-dir -r /opt/requirements.app.txt
 
-# --- kohya setup ---
-RUN git clone https://github.com/FurkanGozukara/kohya_ss /opt/kohya_ss && \
-    cd /opt/kohya_ss && git reset --hard && git pull && \
-    git clone https://github.com/kohya-ss/sd-scripts /opt/kohya_ss/sd-scripts && \
-    cd /opt/kohya_ss/sd-scripts && git reset --hard && git checkout sd3 && git pull
+# --- xulf setup ---
+RUN git clone https://github.com/sudhin05/xulf-final /opt/xulf 
 
 # quick sanity output
-CMD ["bash", "-lc", "python --version && conda --version && nvidia-smi || true && ls -la /opt/kohya_ss | head"]
+CMD ["bash", "-lc", "python --version && conda --version && nvidia-smi || true && ls -la /opt/xulf | head"]
 
